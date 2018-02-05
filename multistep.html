@@ -1,0 +1,50 @@
+<!-- multistep form -->
+<form id="msform" name="myForm">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Account Setup</li>
+    <li ng-class="currentStep == 2 ||  currentStep == 3? 'active':''">Social Profiles</li>
+    <li ng-class="currentStep == 3 ? 'active':''">Personal Details</li>
+  </ul>
+
+  <div ng-switch="currentStep">
+    <div ng-switch-when="1">
+      <fieldset>
+        <h2 class="fs-title">Create your account</h2>
+        <h3 class="fs-subtitle">This is step 1</h3>
+        <input type="email" name="myemail" placeholder="Email" ng-model="details.userEmail" />
+        <!-- {{userEmail}} -->
+        <input type="password" name="pass" placeholder="Password" ng-model="details.userPassword" />
+        <input type="password" name="cpass" placeholder="Confirm Password" ng-model="details.userRePassword" />
+        <input type="button" name="next" class="next action-button" value="Next" ng-click="clickNext()"  />
+      </fieldset>
+    </div>
+    <div ng-switch-when="2">
+      <fieldset>
+        <h2 class="fs-title">Social Profiles</h2>
+        <h3 class="fs-subtitle">Your presence on the social network</h3>
+        <input type="text" name="twitter" placeholder="Twitter" ng-model="socialProfile.twitter"/>
+        <input type="text" name="facebook" placeholder="Facebook" ng-model="socialProfile.facebook"/>
+        <input type="text" name="gplus" placeholder="Google Plus" ng-model="socialProfile.googlePlus"/>
+        <input type="button" name="previous" class="previous action-button" value="Previous" ng-click="clickPrevious()" />
+        <input type="button" name="next" class="next action-button" value="Next" ng-click="clickNext()" />
+      </fieldset>
+    </div>
+    <div ng-switch-when="3">
+      <fieldset>
+        <h2 class="fs-title">Personal Details</h2>
+        <h3 class="fs-subtitle">We will never sell it</h3>
+        <input type="text" name="fname" placeholder="First Name" ng-model="personalDetails.firstName" />
+        <input type="text" name="lname" placeholder="Last Name" ng-model="personalDetails.lastName"  />
+        <input type="text" name="phone" placeholder="Phone" ng-model="personalDetails.phone"  />
+        <textarea name="address" placeholder="Address" ng-model="personalDetails.address" ></textarea>
+        <input type="button" name="previous" class="previous action-button" value="Previous" ng-click="clickPrevious()"/>
+        <input type="submit" name="submit" class="submit action-button" value="Submit" ng-click="submitDetails()" />
+      </fieldset>
+    </div>
+  </div>
+  <!-- fieldsets -->
+
+
+
+</form>
